@@ -115,14 +115,14 @@ BOOL CAboutDlg::OnInitDialog()
     INT rc = Ext2QueryDrvVersion(Version, Date, Time);
 
     if (rc < 0) {
-        s.Format("Ext2Fsd: NOT started !\0");
+        s.Format("FSD: NOT started !\0");
     } else if (rc > 0) {
-        s.Format("Ext2Fsd: %s (%s)\0", Version, Date);
+        s.Format("FSD: %s (%s)\0", Version, Date);
     } else {
-        s.Format("Ext2Fsd: < 0.42 (Dec 2007)\0");
+        s.Format("FSD: < 0.42 (Dec 2007)\0");
     }
     SET_TEXT(IDC_DRIVER, s);
-    s  = "Ext2Mgr: 0.71b(";
+    s  = "FVM: 0.71b(";
     s += __DATE__;
     s += ")\0";
     SET_TEXT(IDC_PROGRAM, s);
@@ -136,7 +136,7 @@ BOOL CAboutDlg::OnInitDialog()
 
     // Disable the "Donate" dialog because the information is outdated.
     CWnd* donate = GetDlgItem(ID_DONATE);
-    if (donate) donate->EnableWindow(false);
+    if (donate) donate->EnableWindow(true);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	              // EXCEPTION: OCX Property Pages should return FALSE
@@ -482,7 +482,7 @@ BOOL CExt2MgrDlg::OnInitDialog()
 	m_VolumeList.SetImageList(&m_ImageList, LVSIL_SMALL);
 
     /* Status Bar Initialization */
-    m_bar.Create(this); //We create the status bar
+    m_bar.Create(this); // We create the status bar
     m_bar.SetIndicators(indicators, 3);
 
     CRect rect;
@@ -491,6 +491,7 @@ BOOL CExt2MgrDlg::OnInitDialog()
     m_bar.SetPaneInfo(1,ID_INDICATOR_TIME,SBPS_NORMAL ,132);
     m_bar.SetPaneInfo(2,ID_INDICATOR_EXTRA,SBPS_STRETCH ,0);
     /* m_bar.GetStatusBarCtrl().SetBkColor(RGB(180,180,180)); */
+	m_bar.GetStatusBarCtrl().SetBkColor(RGB(180, 180, 180));
     RepositionBars(AFX_IDW_CONTROLBAR_FIRST,AFX_IDW_CONTROLBAR_LAST,
                    ID_INDICATOR_EXTRA);
 
@@ -552,13 +553,14 @@ BOOL CExt2MgrDlg::OnInitDialog()
     // Disable the "Donate" dialog because the information is outdated.
     CMenu* pSubHelp = pMenu->GetSubMenu(3);
     if (pSubHelp) {
-        pSubHelp->EnableMenuItem(ID_DONATE, MF_BYCOMMAND | MF_GRAYED | MF_DISABLED);
+        // pSubHelp->EnableMenuItem(ID_DONATE, MF_BYCOMMAND | MF_GRAYED | MF_DISABLED);
+		pSubHelp->EnableMenuItem(ID_DONATE, MF_BYCOMMAND | MF_ENABLED);
     }
 
     m_Menu.CreatePopupMenu();
 
     HICON hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
-    m_Tray.Create(this, WM_TRAY_ICON_NOTIFY,"Ext2 Volume Manager",hIcon, IDR_TRAY);
+    m_Tray.Create(this, WM_TRAY_ICON_NOTIFY,"Filesystem Volume Manager",hIcon, IDR_TRAY);
 
     /* start Ext2Fsd statistics window */
     if (m_bStat) {
@@ -825,7 +827,7 @@ void CExt2MgrDlg::OnService()
 	// TODO: Add your command handler code here
     CServiceManage  SrvDlg;
     if (!SrvDlg.m_bInited) {
-        AfxMessageBox("Cannot query Ext2Fsd service !", MB_OK|MB_ICONSTOP);
+        AfxMessageBox("Cannot query FSD service !", MB_OK|MB_ICONSTOP);
         return;
     }
 
@@ -918,7 +920,7 @@ void CExt2MgrDlg::OnChangeProperty()
 
         if (!NT_SUCCESS(status)) {
 
-            s.Format("Ext2Fsd service isn't started.\n");
+            s.Format("FSD service isn't started.\n");
             AfxMessageBox(s, MB_OK | MB_ICONSTOP);
 
         } else {

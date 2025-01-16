@@ -52,7 +52,7 @@ BOOL CDonate::OnInitDialog()
     //Enable showing the Tooltip
     m_SF.ActiveToolTip(TRUE);
     //Set the Tooltiptext
-    m_SF.SetTootTipText("Donate to Ext2Fsd group via SourceForge.");
+    m_SF.SetTootTipText("Donate via SourceForge.");
 
 
     //Set the target URL 
@@ -60,7 +60,7 @@ BOOL CDonate::OnInitDialog()
     //Enable showing the Tooltip
     m_Paypal.ActiveToolTip(TRUE);
     //Set the Tooltiptext
-    m_Paypal.SetTootTipText("Donate to Ext2Fsd group via Paypal.");
+    m_Paypal.SetTootTipText("Donate via Paypal.");
 
 #if 0
     CHAR Declaration [] =

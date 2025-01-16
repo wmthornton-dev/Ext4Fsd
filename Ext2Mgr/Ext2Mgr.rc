@@ -29,7 +29,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 IDD_DONATE_DIALOG DIALOGEX 0, 0, 268, 219
 STYLE DS_SETFONT | WS_POPUP | WS_CAPTION
-CAPTION "Contribute to Ext2Fsd Group"
+CAPTION "Contribute"
 FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,223,172,32,36
@@ -42,21 +42,21 @@ END
 
 IDD_ABOUTBOX DIALOGEX 0, 0, 313, 223
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "About Ext2 Volume Manager"
+CAPTION "About Filesystem Volume Manager"
 FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "Exit",IDOK,233,197,31,20,WS_GROUP
-    CONTROL         184,IDC_EXT2FSD,"Static",SS_BITMAP | SS_NOTIFY | SS_REALSIZEIMAGE | SS_SUNKEN,13,195,23,28,WS_EX_DLGMODALFRAME
-    LTEXT           "Ext2Mgr:  2.0",IDC_PROGRAM,50,207,171,9,SS_NOPREFIX
+    //CONTROL         184,IDC_EXT2FSD,"Static",SS_BITMAP | SS_NOTIFY | SS_REALSIZEIMAGE | SS_SUNKEN,13,195,23,28,WS_EX_DLGMODALFRAME
+    LTEXT           "FVM:  2.0",IDC_PROGRAM,13,207,171,9,SS_NOPREFIX
     GROUPBOX        "",IDC_ABOUT_SHOW,7,4,299,185,NOT WS_VISIBLE
     DEFPUSHBUTTON   "Donate",ID_DONATE,269,197,31,20,WS_GROUP
-    LTEXT           "Ext2Fsd: 0.44",IDC_DRIVER,50,197,171,9,SS_NOPREFIX
+    LTEXT           "FSD: 0.44",IDC_DRIVER,13,197,171,9,SS_NOPREFIX
 END
 
 IDD_EXT2MGR_DIALOG DIALOGEX 0, 0, 407, 277
 STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
-CAPTION "Ext2 Volume Manager"
+CAPTION "Filesystem Volume Manager"
 MENU IDR_MENU
 FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
@@ -69,7 +69,7 @@ STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_POPUP
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "Apply",IDOK,170,213,37,17
-    GROUPBOX        "Ext2Fsd Service Management",IDC_STATIC,7,7,224,203
+    GROUPBOX        "FSD Service Management",IDC_STATIC,7,7,224,203
     GROUPBOX        "Service status",IDC_STATIC,19,21,201,36,WS_GROUP
     EDITTEXT        IDC_SERVICE_STATUS,26,35,145,14,ES_READONLY
     PUSHBUTTON      "Start",IDC_START_SERVICE,179,33,34,17
@@ -213,7 +213,7 @@ END
 
 IDD_PERFSTAT_DIALOG DIALOGEX 0, 0, 286, 248
 STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Ext2Fsd Statistics"
+CAPTION "FSD Statistics"
 FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "Exit",IDOK,248,228,36,18
@@ -382,14 +382,14 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "Comments", "Bo Branten <bosse@accum.se>"
-            VALUE "CompanyName", "http://www.accum.se/~bosse"
-            VALUE "FileDescription", "Ext2 Volume Manager for Windows"
+            VALUE "Comments", "Wayne Michael Thornton <wmthornton-dev@outlook.com>"
+            VALUE "CompanyName", "https://github.com/wmthornton-dev"
+            VALUE "FileDescription", "Filesystem Volume Manager for Windows"
             VALUE "FileVersion", "3.0.7.9"
-            VALUE "InternalName", "Ext2Mgr"
-            VALUE "LegalCopyright", "Copyright (C) GPL v2.0"
-            VALUE "OriginalFilename", "Ext2Mgr.exe"
-            VALUE "ProductName", "Ext2 Volume Manager for Windows"
+            VALUE "InternalName", "FVM"
+            VALUE "LegalCopyright", "Public Source Zero Copyright License"
+            VALUE "OriginalFilename", "FVM.exe"
+            VALUE "ProductName", "Filesystem Volume Manager for Windows"
             VALUE "ProductVersion", "3.0.7.9"
         END
     END
@@ -412,9 +412,9 @@ BEGIN
         MENUITEM "Show Main Window",            ID_SHOW_MAIN
         MENUITEM SEPARATOR
         MENUITEM "Service Management",          ID_SERVICE
-        MENUITEM "Ext2Fsd Statistics",          ID_PERFSTAT
+        MENUITEM "FSD Statistics",          ID_PERFSTAT
         MENUITEM SEPARATOR
-        MENUITEM "About Ext2Mgr",               ID_ABOUT
+        MENUITEM "About FVM",               ID_ABOUT
         MENUITEM SEPARATOR
         MENUITEM "Exit ...",                    ID_EXIT
     END
@@ -424,8 +424,8 @@ IDR_MENU MENU
 BEGIN
     POPUP "&File"
     BEGIN
-        MENUITEM "&Enable Ext2Mgr autostart ",  ID_ENABLE_AUTOSTART
-        MENUITEM "&Disable Ext2Mgr autostart",  ID_DISABLE_AUTOSTART
+        MENUITEM "&Enable FVM autostart ",  ID_ENABLE_AUTOSTART
+        MENUITEM "&Disable FVM autostart",  ID_DISABLE_AUTOSTART
         MENUITEM SEPARATOR
         MENUITEM "E&xit",                       ID_EXIT
     END
@@ -438,7 +438,7 @@ BEGIN
         MENUITEM "&Reload and Refresh\tF5",     ID_REFRESH
         MENUITEM SEPARATOR
         MENUITEM "&Service Management\tF7",     ID_SERVICE
-        MENUITEM "Ext2Fsd S&tatistics\tF8",     ID_PERFSTAT
+        MENUITEM "FSD S&tatistics\tF8",     ID_PERFSTAT
         MENUITEM SEPARATOR
         MENUITEM "Remove &Dead Letters\tF9",    ID_REMOVE_DEAD_LETTER
         MENUITEM SEPARATOR
@@ -452,8 +452,8 @@ BEGIN
     END
     POPUP "&Help"
     BEGIN
-        MENUITEM "&Help\tF1",                   ID_HELP
-        MENUITEM SEPARATOR
+        // MENUITEM "&Help\tF1",                   ID_HELP
+        // MENUITEM SEPARATOR
         MENUITEM "&About\tF2",                  ID_ABOUT
         MENUITEM SEPARATOR
         MENUITEM "&Donate",                     ID_DONATE
@@ -516,32 +516,32 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDS_ABOUTBOX            "&About Ext2 Volume Manager ..."
+    IDS_ABOUTBOX            "&About Filesystem Volume Manager ..."
 END
 
 STRINGTABLE 
 BEGIN
-    ID_ABOUT                "About Ext2 Volume Manger\tF2"
-    ID_NEW                  "create a new configuration file"
+    ID_ABOUT                "About Filesystem Volume Manger\tF2"
+    ID_NEW                  "Create a new configuration file"
     ID_CHANGE               "Change the settings of the selected driver or volume"
     ID_REFRESH              "Refresh and reload the disks and volumes"
-    ID_EXIT                 "Quit ext2 volume manager ..."
-    ID_SERVICE              "Manage the ext2fsd driver startup information"
+    ID_EXIT                 "Quit Filesystem Volume Manager ..."
+    ID_SERVICE              "Manage the FSD driver startup information"
     ID_FORMAT               "Format the selected volume or parititon"
     ID_PROPERTY             "Show the information and property of the selected volume or partition"
     ID_COPY                 "Copy the only selected item to clipboard"
-    ID_SHOW_MAIN            "Show the main window of Ext2Mgr"
+    ID_SHOW_MAIN            "Show the main window of FVM"
     ID_DRV_LETTER           "Assign or change driver letters of selected volume or disk"
-    ID_DONATE               "Donate to Ext2Fsd group"
+    ID_DONATE               "Donate"
 END
 
 STRINGTABLE 
 BEGIN
-    ID_INSTALL_SERVICE      "Install Ext2Mgr as a service (with autostart enabled)"
-    ID_REMOVE_SERVICE       "Remove Ext2Mgr service (disable service autostart)"
-    ID_ENABLE_AUTOSTART     "Let Ext2Mgr automatically start when system boots"
-    ID_DISABLE_AUTOSTART    "Don't want Ext2Mgr automatically start when system boots"
-    ID_PERFSTAT             "Statistics of memory allocations and Irp processing"
+    ID_INSTALL_SERVICE      "Install FVM as a service (with autostart enabled)"
+    ID_REMOVE_SERVICE       "Remove FVM service (disable service autostart)"
+    ID_ENABLE_AUTOSTART     "Let FVM automatically start when system boots"
+    ID_DISABLE_AUTOSTART    "Don't want FVM automatically start when system boots"
+    ID_PERFSTAT             "Statistics of memory allocations and IRP processing"
     ID_COPYALL              "Copy all disks/partitions/cdrom/volumes information to clipboard"
     ID_FLUSH_BUFFER         "Sync all dirty cache to disk"
     ID_CHANGE_PARTTYPE      "Change the partition type/id"
@@ -566,7 +566,7 @@ END
 STRINGTABLE 
 BEGIN
     IDS_DISK_TYPE_DYN       "Dynamic"
-    IDS_DONATE_DECLARE      "\r\nExt2Fsd is an open source software. It acts as a bridge between Windows and Linux, making life easier to access Linux partitions under Windows systems.\r\n\r\nCurrently there are still lots of jobs left to make a fully functional file system driver, such as complete ext3 support, Linux LVM, Windows Vista, Longhorn. Especially Vista and Longhorn will need driver signing.\r\n\r\nNow I'm the only part-time developer. It needs about two full time developers to implement that job and also it needs some hardwares such SMP system, SCSI array for debugging and testing.\r\n\r\nI'll try my best to make it out. I'm dreaming of that day.\r\n\r\nAny help will be highly appreciated. Thanks and best wishes.\r\n\r\n\r\nYours sincerely,\r\nMatt"
+    IDS_DONATE_DECLARE      "\r\nFVM is an open source software. It acts as a bridge between Windows and Linux, making life easier to access Linux partitions under Windows systems.\r\n"
     IDS_SHOW_PROPERTY       "Show Properties\tF6"
     IDS_COPY_ITEM_TO_CLIP   "&Copy to Clipboard"
     IDS_CHANGE_DRVLETTER    "Change Drive Letter\tF10"
@@ -574,7 +574,7 @@ BEGIN
     IDS_FLUSH_BUFFER        "Flush Cache to Disk\tF11"
     IDS_CHANGE_PARTID       "Change Partition Type\tF12"
     IDS_RELOAD_REFRESH      "Reload and Refresh\tF5"
-    IDS_PERFMEM_STAT        "Ext2Fsd Statistics\tF8"
+    IDS_PERFMEM_STAT        "FSD Statistics\tF8"
     IDS_SERVICE_MANAGE      "Service Management\tF7"
     IDS_REMOVE_DEAD_LETTER  "Remove Dead Letters\tF9"
     IDS_PERFSTAT_NAME       "Name"
@@ -611,7 +611,7 @@ END
 LANGUAGE 9, 1
 #pragma code_page(1252)
 #endif //_WIN32
-#include "res\Ext2Mgr.rc2"  // non-Microsoft Visual C++ edited resources
+#include "res\Ext2Mgr.rc2"   // non-Microsoft Visual C++ edited resources
 #include "afxres.rc"         // Standard components
 #endif
 
